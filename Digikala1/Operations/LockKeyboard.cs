@@ -1,24 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Digikala1.Operations
+namespace locker
 {
-    class LockKeyboard
+    class lockkeyboard
     {
-        private string input;
-        public string LockKeyboradYN()
+        private string y;
+        private string x;
+        private int num;
+        private ConsoleKeyInfo digree;
+        public int keyboardnumberlocker()
         {
-            Console.WriteLine("Do you want to continue? press y, for stop enter n:");
+          while (true)
+            {
+              digree = Console.ReadKey(true);
+                if (char.IsDigit(digree.KeyChar))
+                {
+                    num = num*10 +(int)char.GetNumericValue(digree.KeyChar);
+                    Console.Write(digree.KeyChar);
+                }
+                else
+                {
+                    Console.Beep();
+                }
+                if (digree.Key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine();
+                    break;
+                }               
+            }
+          return num;
+        }
+
+        public string keyboardYESORNOlocker()
+        {
             do
             {
-                input = Console.ReadKey(true).KeyChar.ToString();
+                x = Console.ReadKey(true).KeyChar.ToString();
 
-            } while (input.ToLower() != "y" && input.ToLower() != "n");
+            } while (x.ToLower() != "y" & x.ToLower() != "n");
+            return x;
+        }
+        public string menulocker()
+        {
+            do
+            {
+                y = Console.ReadKey(true).KeyChar.ToString();
 
-            return input;
+            } while (y.ToLower() != "y" & y.ToLower() != "o" & y.ToLower() != "c" & y.ToLower() != "i" & y.ToLower() != "t");
+            return y;
         }
     }
 }
