@@ -1,37 +1,29 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Digikala1.Model;
 
-namespace orcity
+namespace digi
 {
-    class datasetorganiz
+    class dataset
     {
-        string address = @"F:\digikala\orders.csv";
+        string address = @"C:\orders.csv";
         private string line;
         public string cityextractor()
         {
-            List<string> cities = new List<string>();
+            List<string> cityes = new List<string>();
 
             using (StreamReader srreader = new StreamReader(address))
             {
                 while (!srreader.EndOfStream)
                 {
                     line = srreader.ReadLine();
-                    cities.Add(Regex.Replace(line, @"(\d|\.|,|:|-| )+", ""));
+                    cityes.Add(Regex.Replace(line, @"(\d|\.|,|:|-| )+", ""));
 
 
 
-                    var nonduplicatecitys = cities.Distinct();
+                    var nonduplicatecitys = cityes.Distinct();
 
                     foreach (string city in nonduplicatecitys)
                     {
-                        using (StreamWriter strwriter = new StreamWriter(@"F:\digikala\cities\" + city + ".csv"))
+                        using (StreamWriter strwriter = new StreamWriter(@"C:\digikala\cities\" + city + ".csv"))
                         {
 
                             strwriter.WriteLine();
