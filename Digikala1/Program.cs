@@ -2,16 +2,15 @@
 using Digikala1.Model;
 using Digikala1.Operations;
 using locker;
-using orcity;
+using digi;
 
 
-datasetorganiz dataor = new datasetorganiz();
+datasetorganiz dataor = new dataset();
 lockkeyboard yn = new lockkeyboard();
 string q;
 do
 {
     string address = @"C:\orders.csv";
-
     DigikalaContext context = new DigikalaContext(address);
     DigikalaOperation op = new DigikalaOperation(context.digikalas);
     lockkeyboard lk = new lockkeyboard();
@@ -47,18 +46,13 @@ do
         case "t" or "T":
             Console.WriteLine("enter data");
             int t = lk.keyboardnumberlocker();
-
             Console.WriteLine(op.SumSalesByYear(t));
-
             break;
-
 
         case "y" or "Y":
             Console.WriteLine("ENTER Your City (Persian)");
             int y = Convert.ToInt32(Console.ReadLine());
-
             Console.WriteLine(op.SumSalescity_name(y));
-
             break;
 
         default:
